@@ -1,7 +1,7 @@
 # Introduction 
 Standalone version of "layup definition" tool.
 
-Most up to date information is available in the documentation https://national-composites-centre.github.io/LayupDefinition/
+Most up to date information is available in the documentation https://ncc-uk.github.io/LayupDefinition/
 
 For tool testers this testing procedure is recommended:
 1.	Verify installation. 
