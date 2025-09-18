@@ -227,12 +227,12 @@ def AddMat(self,obj):
     print("c")
 
 def CLF(self):
-        
+    
     no_p = self.no_p #this needs fixing, no idea how to pass variable from ui
 
     #first check if multi-material, appropriate number of lines
     if self.cb3.active  == True:
-        mat_count =  self.layout.children[59].text.count(",") #counts an empty line break hence +1 below 
+        mat_count =  self.layout.children[56].text.count(",") #counts an empty line break hence +1 below 
         ply_count =  self.layout.children[63].text.count(",")+1
         if mat_count != ply_count:
             content=Button(text="Please make sure list of materials is same lenght as list of plies,\nfor multi-material option")
@@ -284,8 +284,8 @@ def CLF(self):
         
     else:
         #seems like part was specified manually
-        CADfile = self.layout.children[69].text+"\\"+self.layout.children[72].text
-    print(CADfile)
+        #CADfile = self.layout.children[69].text+"\\"+self.layout.children[72].text
+        CADfile = self.layout.children[69].text+self.layout.children[72].text
     
 
     #Option for basic tool (not circular)
@@ -380,9 +380,9 @@ def CLF(self):
             stored_mat = []
             for i, s in enumerate(seq.split(",")[:]):
                 if self.layout.children[60].active == True:
-                    mat = self.layout.children[59].text
+                    mat = self.layout.children[56].text
                 elif self.layout.children[57].active == True :
-                    mat = self.layout.children[59].text.split(",")[i]
+                    mat = self.layout.children[56].text.split(",")[i]
 
                 #find if dropped off
                 dropped = False
@@ -417,10 +417,11 @@ def CLF(self):
 
                 #create piece delimited by correct spline 
                 #CORE adjusted
+                
                 if mat not in stored_mat:
                     mat_found = False
                     for m in matDatabase:
-                        #print(m.memberName,mat)
+                        
                         if mat == m.memberName:
                             #Add ID as material is being used
                             m.ID = FL.fileMetadata.maxID+1
@@ -507,7 +508,7 @@ def CLF(self):
                 content.bind(on_press=popup.dismiss)
                 popup.open()
 
-    elif self.layout.children[55].active == True:
+    elif self.layout.children[53].active == True:
         #TODO this was created as copy of default tool with drop-offs, this is currently very basic mandrel implementation
         #and it does not account for any drop-offs
 
@@ -541,7 +542,7 @@ def CLF(self):
         noG = len(FL.allGeometry)
 
         #the layup itself
-        seq = str(self.layout.children[63].text)
+        seq = str(self.layout.children[56].text)
         seq = seq.split("[")[1]
         seq = seq.split("]")[0]
 
@@ -560,9 +561,9 @@ def CLF(self):
         stored_mat = []
         for i, s in enumerate(seq.split(",")[:]):
             if self.layout.children[60].active == True:
-                mat = self.layout.children[59].text
+                mat = self.layout.children[56].text
             elif self.layout.children[57].active == True :
-                mat = self.layout.children[59].text.split(",")[i]
+                mat = self.layout.children[56].text.split(",")[i] ##
 
             #find if dropped off (currently cannot)
             dropped = False

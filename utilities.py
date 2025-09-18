@@ -166,12 +166,10 @@ def MatSel(location):
     lf3 = "LD_layup_database"
     seznam = []
     
-    
     #remove the file out of file-path
     loc = ""
     for sec in location.split("/")[0:(location.count("/"))]:
         loc += sec+"/"
-        #print(loc)
     location = loc
 
     if location == "":
@@ -181,13 +179,14 @@ def MatSel(location):
         #print(location+lf3+".json")
         #try:
             #collects all materials available
-        with open(location+lf3+".json", "r") as in_file:
-            json_str= in_file.read()
+        #with open(location+lf3+".json", "r") as in_file:
+        #    json_str= in_file.read()
             
-            D = deserialize(json_str,string_input=True)
-            
-            for i ,material in enumerate(D.allMaterials):
-                seznam.append(material)
+        #D = deserialize(json_str,string_input=True)
+        D = cs.Open(lf3,location)
+        
+        for i ,material in enumerate(D.allMaterials):
+            seznam.append(material)
         # except:
         
         #     #TODO consider this to be pop-up

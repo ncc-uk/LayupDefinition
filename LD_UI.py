@@ -206,22 +206,22 @@ class LayupDefinitionApp(App):
     
     #The below passing as to happen because within button one cannot (for some reasons) specify variables going into function
     def multi_mat(self,obj):
-        if "." in self.layout.children[66].text:
+        if "." in self.layout.children[69].text:
             #assume no other . in name, otherwise ... TODO
-            t6 = self.layout.children[66].text.replace("/","//")
+            t6 = self.layout.children[69].text.replace("/","//")
             ct = t6.count("//")
             t_temp = t6.split("//")[ct]
             location = t6.replace(t_temp,"")
         else:
-            location = self.layout.children[66].text
+            location = self.layout.children[69].text
         try:
-            with open(location+self.layout.children[69].text+".csv","r") as ex:
+            with open(location+self.layout.children[72].text+".csv","r") as ex:
                 tt = ex.read()
                 mat_list = ""
                 mat_list = tt.replace("\n",",")
                 self.layout.children[56].text = mat_list
         except:
-            content=Button(text=location+self.layout.children[69].text+".csv\ndoes not exist, for multi material please add this .csv file.\nAdd names of materials divided by line-breaks.\nNumber of lines must correspond to number of listed orientations.")
+            content=Button(text=location+self.layout.children[72].text+".csv\ndoes not exist, for multi material please add this .csv file.\nAdd names of materials divided by line-breaks.\nNumber of lines must correspond to number of listed orientations.")
             popup = Popup(title='User info', content=content,auto_dismiss=False,size_hint=(1.5, 0.25))
             content.bind(on_press=popup.dismiss)
             popup.open()
